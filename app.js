@@ -16,9 +16,15 @@ request({url: url, json: true}, (error, response) => {
 })
 
 
-// const urlGeo = "https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoianVsaWVubWFsIiwiYSI6ImNrd3Z3M3Z0MzFtN2IzMWxzdzFtNG0xdTEifQ.mI8ofvz_w0NV4p9AtYoOqw&limit=1"
-// request({url: urlGeo, json: true}, (error, response) => {
-//   const latitude = response.body.features[0].center[1]
-//   const longitude = response.body.features[0].center[0]
-//   console.log(latitude, longitude)
-// })
+const urlGeo = "https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoianVsaWVubWFsIiwiYSI6ImNrd3Z3M3Z0MzFtN2IzMWxzdzFtNG0xdTEifQ.mI8ofvz_w0NV4p9AtYoOqw&limit=1"
+request({url: urlGeo, json: true}, (error, response) => {
+  if (error) {
+      console.log('Unable to connect to Geocoding service');
+  } else if (response.body.features.length === 0) {
+      console.log('unable to locate the location you entered');
+  } else {
+      const latitude = response.body.features[0].center[1];
+      const longitude = response.body.features[0].center[0];
+      console.log(latitude, longitude);
+  }
+})
