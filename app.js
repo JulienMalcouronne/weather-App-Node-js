@@ -1,6 +1,7 @@
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
+// give forecast for a given location given by the user
 const address = process.argv[2]
 if (!address) {
   console.log('Please provide an address')
